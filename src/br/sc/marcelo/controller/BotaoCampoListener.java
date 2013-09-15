@@ -36,7 +36,7 @@ public class BotaoCampoListener implements ActionListener {
 		processaClique(botaoCampo);
 		if (vitoria((JPanel)botaoCampo.getParent())) {
 			exibeMinas(botaoCampo.getPainelCampoMinado(), 
-					"src/br/sc/marcelo/images/bandeira.png");
+					"/br/sc/marcelo/images/bandeira.png");
 			fimDeJogo(botaoCampo, true);
 		}
 	}
@@ -47,34 +47,34 @@ public class BotaoCampoListener implements ActionListener {
 			switch (controladorJogo.getCoordenada(
 					botaoCampo.getLinha(), botaoCampo.getColuna())) {
 			case 1:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored1.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored1.png");
 				break;
 			case 2:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored2.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored2.png");
 				break;
 			case 3:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored3.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored3.png");
 				break;
 			case 4:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored4.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored4.png");
 				break;
 			case 5:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored5.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored5.png");
 				break;
 			case 6:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored6.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored6.png");
 				break;
 			case 7:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored7.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored7.png");
 				break;
 			case 8:
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/colored8.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/colored8.png");
 				break;
 			case CampoMinado.MINA:
 				fimDeJogo(botaoCampo, false);
 				exibeMinas(botaoCampo.getPainelCampoMinado(), 
-						"src/br/sc/marcelo/images/mina_botao.png");
-				definirIcone(botaoCampo, "src/br/sc/marcelo/images/boom.jpeg");
+						"/br/sc/marcelo/images/mina_botao.png");
+				definirIcone(botaoCampo, "/br/sc/marcelo/images/boom.jpeg");
 				break;
 			case 0:
 				botaoCampo.setEnabled(false);
@@ -179,8 +179,8 @@ public class BotaoCampoListener implements ActionListener {
 
 	private void definirIcone(JButton botao, String imagem) {
 		botao.setEnabled(false);
-		botao.setIcon(new ImageIcon(imagem));
-		botao.setDisabledIcon(new ImageIcon(imagem));
+		botao.setIcon(new ImageIcon(controladorJogo.getResource(imagem)));
+		botao.setDisabledIcon(new ImageIcon(controladorJogo.getResource(imagem)));
 	}
 	
 	private boolean vitoria(JPanel painelCampoMinado) {

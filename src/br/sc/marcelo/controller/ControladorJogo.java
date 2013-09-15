@@ -1,6 +1,7 @@
 package br.sc.marcelo.controller;
 
 import java.awt.EventQueue;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
@@ -121,4 +122,7 @@ public class ControladorJogo {
 		return cronometro;
 	}
 
+	public URL getResource(String recurso) {
+		return getClass().getResource(recurso);
+	}
 }

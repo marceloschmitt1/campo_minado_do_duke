@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -73,7 +72,7 @@ public class JanelaCampoMinado extends JFrame
 	//private CampoMinado campoMinado;
 	/** Controlador do jogo **/
 	private ControladorJogo controladorJogo;
-	
+
 	public JanelaCampoMinado() {
 		controladorJogo = new ControladorJogo();
 		controladorJogo.addObservadorJogo(this);
@@ -95,7 +94,7 @@ public class JanelaCampoMinado extends JFrame
 		setSize(width / 2, height / 2);
 		setLocationByPlatform(true);
 		Image icon = kit.getImage(
-				"src/br/sc/marcelo/images/mina.jpeg");
+				controladorJogo.getResource("/br/sc/marcelo/images/mina.jpeg"));
 		setIconImage(icon);
 		
 		//Definido barra de menu e menu da aplicação
@@ -125,22 +124,7 @@ public class JanelaCampoMinado extends JFrame
 				BorderLayout.NORTH);
 		JPanel campos = new JPanel(new GridLayout(2, 2, 2, 2));
 		Icon icone = new ImageIcon(
-				"src/br/sc/marcelo/../marcelo/images/Duke-coolapps-30pct.gif");
-		System.out.println(getClass().getClassLoader().getResource("duke_wave2.jpg"));
-		//File f = new File(getClass().getResource("images/new_duke.jpg").getFile());
-		//System.out.println("existe? " + f.exists());
-		System.out.println(getClass().getResource("images/duke_wave2.jpg"));
-		
-		try {
-			Enumeration<URL> resources = getClass().getClassLoader().getResources("src");
-			while(resources.hasMoreElements()) {
-				System.out.println(resources.nextElement());
-			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
+				controladorJogo.getResource("/br/sc/marcelo/images/Duke-coolapps-30pct.gif"));
 		
 		JButton campo8x8 = new JButton("8x8", icone);
 		//campo8x8.addActionListener(new BotaoOpcaoListener(8 , 8, 10));
@@ -262,8 +246,9 @@ public class JanelaCampoMinado extends JFrame
 	
 	private void construirBarraDeFerramentas() {
 		barraDeFerramentas = new JToolBar();
-		botaoNovo = new JButton(new ImageIcon("" +
-				"src/br/sc/marcelo/images/new_duke.jpg"));
+		botaoNovo = new JButton(new ImageIcon(
+				controladorJogo.getResource("/br/sc/marcelo/images/new_duke.jpg")));
+				//controladorJogo.getResource("src/br/sc/marcelo/images/new_duke.jpg")));
 		botaoNovo.setToolTipText("Iniciar um novo jogo");
 		botaoNovo.addActionListener(new ActionListener() {
 			@Override
@@ -319,22 +304,22 @@ public class JanelaCampoMinado extends JFrame
 	public void estadoJogoMudou(final EstadoJogo ESTADO) {
 		switch (ESTADO) {
 		case NOVO:
-			botaoNovo.setIcon(new ImageIcon("src/br/sc/marcelo/images/new_duke.jpg"));
+			botaoNovo.setIcon(new ImageIcon(controladorJogo.getResource("/br/sc/marcelo/images/new_duke.jpg")));
 			break;
 		case PARADO:
-			botaoNovo.setIcon(new ImageIcon("src/br/sc/marcelo/images/new_duke.jpg"));
+			botaoNovo.setIcon(new ImageIcon(controladorJogo.getResource("/br/sc/marcelo/images/new_duke.jpg")));
 			break;
 		case INICIADO:
-			botaoNovo.setIcon(new ImageIcon("src/br/sc/marcelo/images/gaming_duke.png"));
+			botaoNovo.setIcon(new ImageIcon(controladorJogo.getResource("/br/sc/marcelo/images/gaming_duke.png")));
 			break;
 		case PAUSADO:
 			//TODO implementar sistema de pausa
 			break;
 		case VITORIA:
-			botaoNovo.setIcon(new ImageIcon("src/br/sc/marcelo/images/happy_duke.jpg"));
+			botaoNovo.setIcon(new ImageIcon(controladorJogo.getResource("/br/sc/marcelo/images/happy_duke.jpg")));
 			break;
 		case DERROTA:
-			botaoNovo.setIcon(new ImageIcon("src/br/sc/marcelo/images/toasted_duke.jpg"));
+			botaoNovo.setIcon(new ImageIcon(controladorJogo.getResource("/br/sc/marcelo/images/toasted_duke.jpg")));
 			break;
 		}
 	}

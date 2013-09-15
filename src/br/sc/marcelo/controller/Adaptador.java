@@ -27,7 +27,7 @@ public class Adaptador extends MouseAdapter {
 				if (botao.isEnabled()) {
 					if (botao.getIcon() == null) {
 						botao.setIcon(new ImageIcon(
-								"src/br/sc/marcelo/images/bandeira.png"));
+								getClass().getResource("/br/sc/marcelo/images/bandeira.png")));
 					} else {
 						botao.setIcon(null);
 					}
